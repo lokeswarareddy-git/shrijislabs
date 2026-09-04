@@ -15,7 +15,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          background: "#050506",
+          background: "#ffffff",
           padding: "90px",
         }}
       >
@@ -24,7 +24,7 @@ export default function OpengraphImage() {
             display: "flex",
             fontSize: 26,
             letterSpacing: 6,
-            color: "#6b6b72",
+            color: "#2563eb",
             fontFamily: "sans-serif",
             textTransform: "uppercase",
             marginBottom: 28,
@@ -37,7 +37,7 @@ export default function OpengraphImage() {
             display: "flex",
             fontSize: 68,
             fontWeight: 700,
-            color: "#f5f5f7",
+            color: "#0b1220",
             fontFamily: "sans-serif",
             lineHeight: 1.15,
             letterSpacing: -2,

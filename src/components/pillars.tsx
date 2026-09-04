@@ -62,26 +62,25 @@ export function Pillars() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 sm:mt-20">
+        <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-14 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-12">
           {PILLARS.map((pillar, i) => (
-            <Reveal key={pillar.title} delay={i * 0.04}>
-              <div className="group flex flex-col gap-6 border-b border-border py-9 sm:flex-row sm:items-center sm:gap-10 sm:py-11">
-                <span className="font-mono text-sm text-foreground-subtle sm:w-10">
-                  {pillar.index}
-                </span>
-
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-border text-foreground-muted transition-colors duration-500 group-hover:border-accent-2/40 group-hover:text-accent-2">
-                  <pillar.Icon className="h-7 w-7" />
+            <Reveal key={pillar.title} delay={(i % 3) * 0.05}>
+              <div className="group">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-white">
+                    <pillar.Icon className="h-7 w-7" />
+                  </div>
+                  <span className="font-mono text-xs text-foreground-subtle">
+                    {pillar.index}
+                  </span>
                 </div>
 
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium tracking-tight sm:text-2xl">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-1.5 max-w-xl text-base text-foreground-muted sm:mt-2">
-                    {pillar.description}
-                  </p>
-                </div>
+                <h3 className="mt-6 text-xl font-medium tracking-tight">
+                  {pillar.title}
+                </h3>
+                <p className="mt-2 max-w-sm text-base leading-relaxed text-foreground-muted">
+                  {pillar.description}
+                </p>
               </div>
             </Reveal>
           ))}
