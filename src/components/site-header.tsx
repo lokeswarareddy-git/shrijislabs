@@ -27,6 +27,29 @@ export function SiteHeader() {
     };
   }, [menuOpen]);
 
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    event.preventDefault();
+    const wasOpen = menuOpen;
+    setMenuOpen(false);
+    const scrollToTarget = () => {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.pushState(null, "", href);
+      }
+    };
+    // The mobile menu locks body scroll while open, so a same-instant
+    // anchor jump gets swallowed. Wait for the close transition first.
+    if (wasOpen) {
+      window.setTimeout(scrollToTarget, 300);
+    } else {
+      scrollToTarget();
+    }
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
@@ -48,6 +71,7 @@ export function SiteHeader() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-sm text-foreground-muted transition-colors hover:text-foreground"
             >
               {link.label}
@@ -57,6 +81,7 @@ export function SiteHeader() {
 
         <a
           href="#contact"
+          onClick={(e) => handleNavClick(e, "#contact")}
           className="hidden rounded-full border border-border-strong px-5 py-2 text-sm text-foreground transition-colors hover:border-accent-2/60 hover:text-accent-2 md:inline-block"
         >
           Let&rsquo;s Build
@@ -96,7 +121,7 @@ export function SiteHeader() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="border-b border-border py-4 text-lg text-foreground-muted transition-colors hover:text-foreground"
                 >
                   {link.label}
@@ -104,7 +129,7 @@ export function SiteHeader() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "#contact")}
                 className="mt-6 rounded-full border border-border-strong px-5 py-3 text-center text-sm text-foreground"
               >
                 Let&rsquo;s Build
