@@ -14,6 +14,7 @@ const PILLARS = [
     title: "AI Applications",
     description: "Intelligent applications powered by modern AI.",
     Icon: AiApplicationsIcon,
+    apps: [{ name: "Trade Orbit", href: "https://tradeorbit.shrijislabs.com" }],
   },
   {
     index: "02",
@@ -81,6 +82,22 @@ export function Pillars() {
                 <p className="mt-2 max-w-sm text-base leading-relaxed text-foreground-muted">
                   {pillar.description}
                 </p>
+                {"apps" in pillar && pillar.apps && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {pillar.apps.map((app) => (
+                      <a
+                        key={app.href}
+                        href={app.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 rounded-full border border-border-strong px-3 py-1 text-xs font-medium text-accent transition-colors hover:border-accent/60 hover:bg-accent-soft"
+                      >
+                        {app.name}
+                        <span aria-hidden>&#8599;</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </Reveal>
           ))}
