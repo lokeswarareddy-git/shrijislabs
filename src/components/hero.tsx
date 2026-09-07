@@ -44,7 +44,7 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-border-strong px-7 py-3.5 text-sm font-medium text-foreground transition-colors duration-300 hover:border-accent-2/60 hover:text-accent-2"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-accent-2/50 px-7 py-3.5 text-sm font-medium text-accent-2 transition-colors duration-300 hover:border-accent-2 hover:bg-accent-soft"
             >
               Let&rsquo;s Build
             </a>

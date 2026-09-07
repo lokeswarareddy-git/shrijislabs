@@ -82,7 +82,7 @@ export function SiteHeader() {
         <a
           href="#contact"
           onClick={(e) => handleNavClick(e, "#contact")}
-          className="hidden rounded-full border border-border-strong px-5 py-2 text-sm text-foreground transition-colors hover:border-accent-2/60 hover:text-accent-2 md:inline-block"
+          className="hidden rounded-full border border-accent-2/50 px-5 py-2 text-sm text-accent-2 transition-colors hover:border-accent-2 hover:bg-accent-soft md:inline-block"
         >
           Let&rsquo;s Build
         </a>
@@ -130,7 +130,7 @@ export function SiteHeader() {
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="mt-6 rounded-full border border-border-strong px-5 py-3 text-center text-sm text-foreground"
+                className="mt-6 rounded-full border border-accent-2/50 px-5 py-3 text-center text-sm text-accent-2 transition-colors hover:border-accent-2 hover:bg-accent-soft"
               >
                 Let&rsquo;s Build
               </a>
