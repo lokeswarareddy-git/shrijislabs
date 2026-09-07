@@ -13,6 +13,19 @@
   --accent-soft: rgba(37, 99, 235, 0.08);
 }
 
+.dark {
+  --background: #0a0e17;
+  --background-elevated: #111827;
+  --foreground: #f3f6fb;
+  --foreground-muted: #a3adc2;
+  --foreground-subtle: #78829a;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent: #3b82f6;
+  --accent-2: #38bdf8;
+  --accent-soft: rgba(59, 130, 246, 0.14);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-background-elevated: var(--background-elevated);
@@ -35,6 +48,11 @@
 html {
   background: var(--background);
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 section[id] {
@@ -45,6 +63,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-feature-settings: "ss01" 1, "cv01" 1;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
@@ -72,7 +91,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(100deg, #0b1220 15%, var(--accent) 55%, var(--accent-2) 90%);
+  background: linear-gradient(100deg, var(--foreground) 15%, var(--accent) 55%, var(--accent-2) 90%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

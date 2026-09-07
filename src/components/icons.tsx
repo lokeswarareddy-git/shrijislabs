@@ -85,3 +85,24 @@ export function EmergingTechIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function SunIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="16" cy="16" r="6" />
+      <path
+        d="M16 3.5v4M16 24.5v4M28.5 16h-4M7.5 16h-4M24.4 7.6l-2.8 2.8M10.4 21.6l-2.8 2.8M24.4 24.4l-2.8-2.8M10.4 10.4L7.6 7.6"
+        opacity="0.8"
+      />
+    </svg>
+  );
+}
+
+export function MoonIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M24.5 20.2A10.4 10.4 0 1 1 11.8 7.5a8.4 8.4 0 0 0 12.7 12.7z" />
+    </svg>
+  );
+}
+

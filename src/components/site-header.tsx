@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const NAV_LINKS = [
   { href: "#build", label: "What We Build" },
@@ -87,24 +88,28 @@ export function SiteHeader() {
           Let&rsquo;s Build
         </a>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="relative z-50 flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
-        >
-          <span
-            className={`h-px w-5 bg-foreground transition-transform duration-300 ${
-              menuOpen ? "translate-y-[3px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`h-px w-5 bg-foreground transition-transform duration-300 ${
-              menuOpen ? "-translate-y-[3px] -rotate-45" : ""
-            }`}
-          />
-        </button>
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="relative z-50 flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+          >
+            <span
+              className={`h-px w-5 bg-foreground transition-transform duration-300 ${
+                menuOpen ? "translate-y-[3px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-px w-5 bg-foreground transition-transform duration-300 ${
+                menuOpen ? "-translate-y-[3px] -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
