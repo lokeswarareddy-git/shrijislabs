@@ -66,7 +66,7 @@ export function Pillars() {
         <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-14 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-12">
           {PILLARS.map((pillar, i) => (
             <Reveal key={pillar.title} delay={(i % 3) * 0.05}>
-              <div className="group">
+              <div className="group rounded-2xl p-2 -m-2 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(37,99,235,0.35)]">
                 <div className="flex items-center gap-4">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-white">
                     <pillar.Icon className="h-7 w-7" />
