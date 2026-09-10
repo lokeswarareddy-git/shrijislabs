@@ -14,7 +14,10 @@ const PILLARS = [
     title: "AI Applications",
     description: "Intelligent applications powered by modern AI.",
     Icon: AiApplicationsIcon,
-    apps: [{ name: "Trade Orbit", href: "https://tradeorbit.shrijislabs.com" }],
+    apps: [
+      { name: "Trade Orbit", href: "https://tradeorbit.shrijislabs.com" },
+      { name: "ChapterCV", href: "https://chaptercv.shrijislabs.com" },
+    ],
   },
   {
     index: "02",
