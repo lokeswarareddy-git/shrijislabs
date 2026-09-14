@@ -1,25 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { MoonIcon, SunIcon } from "@/components/icons";
 
 type Theme = "light" | "dark";
 
 function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
-  window.localStorage.setItem("theme", theme);
+  try { window.localStorage.setItem("theme", theme); } catch {}
+}
+
+function getTheme(): Theme {
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+function subscribe(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
 }
 
 export function ThemeToggle({ className = "" }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme | null>(null);
-
-  useEffect(() => {
-    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
-  }, []);
-
-  if (theme === null) {
-    return <span className={`inline-block h-9 w-9 ${className}`} aria-hidden="true" />;
-  }
+  const theme = useSyncExternalStore(subscribe, getTheme, () => "light" as Theme);
 
   const next: Theme = theme === "dark" ? "light" : "dark";
 
@@ -28,7 +29,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={() => {
         applyTheme(next);
-        setTheme(next);
+
       }}
       aria-label={`Switch to ${next} theme`}
       className={`flex h-9 w-9 items-center justify-center rounded-full text-foreground-muted transition-colors hover:text-foreground ${className}`}

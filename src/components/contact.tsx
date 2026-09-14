@@ -1,37 +1,4 @@
-import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/lib/site";
-
 export function Contact() {
-  return (
-    <section
-      id="contact"
-      className="relative overflow-hidden border-t border-border py-32 sm:py-44"
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[50vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[140px]"
-      />
-
-      <div className="relative mx-auto max-w-3xl px-6 text-center sm:px-8">
-        <Reveal>
-          <h2 className="text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            Have an idea?
-            <br />
-            Let&rsquo;s build it.
-          </h2>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex items-center justify-center rounded-full bg-foreground px-8 py-4 text-sm font-medium text-background transition-transform duration-300 hover:scale-[1.03] hover:opacity-90"
-            >
-              {siteConfig.email}
-            </a>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
+  return <section id="contact" className="border-t border-border py-20 sm:py-28"><div className="mx-auto flex max-w-6xl flex-col justify-between gap-10 px-6 sm:px-8 md:flex-row md:items-end"><div><p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">Contact</p><h2 className="mt-5 text-4xl font-medium tracking-tight sm:text-5xl">Good things start<br />with a conversation.</h2><p className="mt-6 max-w-md leading-relaxed text-foreground-muted">Product feedback, a question, or an idea to explore together. We’d like to hear from you.</p></div><a href={`mailto:${siteConfig.email}`} className="inline-flex min-h-12 items-center gap-6 self-start border-b border-foreground pb-3 text-lg font-medium transition-colors hover:text-accent md:self-auto">{siteConfig.email}<span aria-hidden="true">↗</span></a></div></section>;
 }

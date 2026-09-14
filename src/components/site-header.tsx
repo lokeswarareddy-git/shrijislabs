@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const NAV_LINKS = [
@@ -11,6 +11,7 @@ const NAV_LINKS = [
 ];
 
 export function SiteHeader() {
+  const reducedMotion = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -38,7 +39,7 @@ export function SiteHeader() {
     const scrollToTarget = () => {
       const el = document.querySelector(href);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        el.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
         history.pushState(null, "", href);
       }
     };
@@ -95,6 +96,8 @@ export function SiteHeader() {
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onKeyDown={(event) => { if (event.key === "Escape") setMenuOpen(false); }}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             className="relative z-50 flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
           >
@@ -115,9 +118,11 @@ export function SiteHeader() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -12 }}
+            id="mobile-navigation"
+            onKeyDown={(event) => { if (event.key === "Escape") { setMenuOpen(false); document.querySelector<HTMLButtonElement>('[aria-controls="mobile-navigation"]')?.focus(); } }}
+            initial={reducedMotion ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            exit={{ opacity: 0, y: reducedMotion ? 0 : -12 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="border-t border-border bg-background px-6 pb-8 pt-4 md:hidden"
           >

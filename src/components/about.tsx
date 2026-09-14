@@ -1,30 +1,3 @@
-import { Reveal } from "@/components/reveal";
-
 export function About() {
-  return (
-    <section id="about" className="relative overflow-hidden border-t border-border py-28 sm:py-36">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-[-10%] top-1/2 h-[40vh] w-[40vh] -translate-y-1/2 rounded-full bg-accent-2/10 blur-[130px]"
-      />
-
-      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
-          <Reveal>
-            <span className="text-xs font-medium uppercase tracking-[0.24em] text-foreground-subtle">
-              About
-            </span>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <h2 className="text-balance text-3xl font-medium leading-snug tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.2]">
-              SHRIJIS Labs is a technology company focused on building
-              useful software, intelligent applications, and innovative
-              digital products.
-            </h2>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="about" className="border-t border-border bg-background-elevated py-20 sm:py-28"><div className="mx-auto grid max-w-6xl gap-8 px-6 sm:px-8 md:grid-cols-[1fr_2fr] md:gap-16"><p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">About</p><div><h2 className="max-w-2xl text-3xl font-medium leading-tight tracking-tight sm:text-4xl">One home for the things<br className="hidden sm:block" /> we believe are worth building.</h2><p className="mt-7 max-w-xl text-lg leading-relaxed text-foreground-muted">SHRIJIS Labs is an independent technology company building useful software, intelligent applications, and digital products.</p><p className="mt-5 max-w-xl leading-relaxed text-foreground-muted">We start with a practical problem, build a focused solution, and improve it through use and feedback. From a first experiment to an everyday tool, each product is part of the same long-term ambition: technology that earns its place in your life.</p></div></div></section>;
 }
